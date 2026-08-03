@@ -1,0 +1,91 @@
+<link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Animal Image Classifier</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1>🦁 Animal Image Classifier</h1>
+
+    <p class="subtitle">
+        Deep Learning based Animal Classification using a Custom CNN
+    </p>
+
+    <div class="animals">
+
+        <div class="card">🐎<br>Horse</div>
+        <div class="card">🐵<br>Monkey</div>
+        <div class="card">🐯<br>Tiger</div>
+        <div class="card">🦌<br>Deer</div>
+        <div class="card">🐘<br>Elephant</div>
+
+    </div>
+
+    <form action="/predict" method="POST" enctype="multipart/form-data">
+
+        <input type="file" name="image" required>
+
+        <button type="submit">
+            Predict Animal
+        </button>
+
+    </form>
+
+    {% if image_path %}
+
+    <div class="result">
+
+        <h2>Uploaded Image</h2>
+
+        <img src="{{ image_path }}" class="preview">
+
+        <h2>Prediction</h2>
+
+        <div class="prediction">
+
+            {{ prediction }}
+
+        </div>
+
+    </div>
+
+    {% endif %}
+
+    <div class="info">
+
+        <h2>Project Information</h2>
+
+        <ul>
+
+            <li>🧠 Custom CNN Architecture</li>
+
+            <li>📷 Image Size: 224 × 224</li>
+
+            <li>🐾 Classes: Horse, Monkey, Tiger, Deer, Elephant</li>
+
+            <li>🎯 Test Accuracy: 80.43%</li>
+
+            <li>⚡ Built using PyTorch + Flask</li>
+
+        </ul>
+
+    </div>
+
+    <footer>
+
+        Developed by <b>Muhammad Hadin Mirza</b>
+
+    </footer>
+
+</div>
+
+</body>
+</html>
